@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-web-server
+  namespace: appplication-server
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: web-server
+    spec:
+      containers:
+      - name: web-server
+        image: wusi24/node-web-server:1.0
+        ports:
+        - containerPort: 3000
+  selector:
+    matchLabels:
+      app: web-server
